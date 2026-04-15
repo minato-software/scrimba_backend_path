@@ -1,18 +1,24 @@
 function preLoadImg(url) {
-  return 
-/*
-Challenge:
-1. Return a new promise. The promise should:
-    - create a new image and assign the incoming url 
-      to its src attribute. (Use the Image constructor 
-      for this!)
-    - listen out for a load event. If a load event is 
-      detected, the promise should resolve, providing the
-      image element.
-    - listen out for an “error” event. If an error 
-      event is detected, the promise should reject giving 
-      the message “img has NOT loaded”.
-*/
+  return new Promise((resolve, reject)=> {
+    const img = new Image()
+    img.src = url
+    img.alt = "a beautiful scene"
+    img.addEventListener('load', ()=> resolve(img))
+    img.addEventListener('error', ()=> reject('img has NOT loaded'))
+  })
+  /*
+  Challenge:
+  1. Return a new promise. The promise should:
+      - create a new image and assign the incoming url
+        to its src attribute. (Use the Image constructor
+        for this!)
+      - listen out for a load event. If a load event is
+        detected, the promise should resolve, providing the
+        image element.
+      - listen out for an “error” event. If an error
+        event is detected, the promise should reject giving
+        the message “img has NOT loaded”.
+  */
 }
 
 try {
