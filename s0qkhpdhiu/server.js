@@ -9,6 +9,13 @@ const server = http.createServer(async (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.statusCode = 200;
         res.end(JSON.stringify(destinations))
+    } else {
+        res.writeHead(404, {'Content-Type': 'application/json'});
+        const errorResponse = {
+            error: 'not found',
+            message: 'The requested route does not exist'
+        };
+        res.end(JSON.stringify(errorResponse));
     }
 });
 
