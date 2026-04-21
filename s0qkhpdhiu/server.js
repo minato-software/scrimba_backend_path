@@ -9,6 +9,15 @@ const server = http.createServer(async (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.statusCode = 200;
         res.end(JSON.stringify(destinations))
+    } else if (req.url.startsWith('/api/continent/') && req.method === 'GET') {
+        const urlParts = req.url.split('/');
+        const continentName  = urlParts.pop();
+        const filteredDestinations = destinations.filter((destination) => {
+            return destination.continent.toLowerCase() === continentName.toLowerCase();
+        })
+        res.setHeader('Content-Type', 'application/json');
+        res.statusCode = 200;
+        res.end(JSON.stringify(filteredDestinations));
     } else {
         res.writeHead(404, {'Content-Type': 'application/json'});
         const errorResponse = {
