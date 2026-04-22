@@ -1,12 +1,18 @@
 import http from 'node:http'
+import path from 'node:path'
 
 const PORT = 4000
 
-const server = http.createServer(async (req, res) => {
-    const serveString = '<html><h1>The server is working</h1></html>';
+const __dirname = import.meta.dirName
+
+const server = http.createServer((req, res) => {
+   const absPathToResource = path.join(__dirname, 'public', 'index.html')
+   const relPathToResource = path.join('public', 'index.html')
+   console.log('absolute: ', absPathToResource)
+   console.log('relative: ', relPathToResource)
 
     res.writeHead(200, { 'Content-Type': 'text/html' })
-    res.end(serveString)
+    res.end()
 })
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`))
