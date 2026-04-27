@@ -5,4 +5,4 @@
 5. Pass sendResponse() the correct content-contentType.
 6. Test.
 
-your ternary adds a leading '/' which causes the join to skip the public folder, and you're passing the whole file path to getContentType instead of just its extension. How can you extract the extension with path.extname and adjust the ternary path?
+Your file path points to data.json instead of the 'data/data.json' file
