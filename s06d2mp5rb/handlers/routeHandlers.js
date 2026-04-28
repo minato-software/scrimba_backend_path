@@ -10,8 +10,8 @@ export async function handleGet(res) {
 }  
 
 export async function handlePost(req) {
-  const rawBody = await parseJSONBody(req)
-  console.log(rawBody)
+  const parsedBody = await parseJSONBody(req)
+
 } 
 
 // santizeData() 
